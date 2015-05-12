@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 @import url(https://fonts.googleapis.com/css?family=Merriweather);
+.card {
+  box-sizing: border-box; }
+
 .normal {
   background-color: #39628d; }
 
@@ -91,6 +94,9 @@
 
 .three-quarters {
   width: 75%; }
+
+.inline-block {
+  display: inline-block; }
 
 .button, .icon-button {
   color: white !important;
@@ -208,7 +214,6 @@ footer {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: inset 0px 1px 3px #ddd;
   font-size: 1.3em;
-  width: 50%;
   padding: 5px;
   border: none; }
   .search-bar:focus {

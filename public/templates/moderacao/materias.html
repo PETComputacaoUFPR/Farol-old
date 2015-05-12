@@ -1,0 +1,7 @@
+<div class="card text-left">
+    <input type="text" ng-model="query" class="search-bar full" placeholder="Buscar"/>
+</div>
+<div ng-repeat="materia in materias | filter:query" class="card one-third inline-block">
+    <h3>{{materia.codigo}}</h3>
+    <p>{{materia.nome}}</p>
+</div>
