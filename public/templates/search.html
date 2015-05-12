@@ -1,0 +1,16 @@
+<header class="header-search">
+    <h2><a href="#/home"><i class="fa fa-anchor"></i> Farol</a></h2>
+    <form ng-submit="buscar()">
+		<input type="search" placeholder="O que você procura?" name="search" 
+		    class="search-bar" ng-model="query" required ng-keyup="buscar()">
+		<input type="submit" class="icon-button red" value="&#xf002;">
+	</form>
+</header>
+<section>
+    <div ng-show="!arquivos.length">
+        <p>Parece que sua busca não retornou nenhum resultado :(</p>
+    </div>
+    <li ng-repeat="arquivo in arquivos">
+        <ul>{{arquivo}}</ul>
+    </li>
+</section>

@@ -1,0 +1,33 @@
+{
+  "name": "Falesia",
+  "version": "0.0.0",
+  "description": "Frontend para o Farol",
+  "main": "index.html",
+  "dependencies": {
+    "bower": "^1.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VytorCalixto/Falesia.git"
+  },
+  "keywords": [
+    "farol",
+    "ufpr",
+    "pet"
+  ],
+  "author": "PET Computação UFPR",
+  "bugs": {
+    "url": "https://github.com/VytorCalixto/Falesia/issues"
+  },
+  "homepage": "https://github.com/VytorCalixto/Falesia",
+  "private": true
+}
