@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <title>Farol - Repositório de Provas e Trabalhos</title>
     
-    <script src="../bower_components/angular/angular.min.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="js/farol.js"></script>
-    
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.min.css">
     <meta name="description" content="Farol - Repositório de provas e trabalhos dos cursos de Informática Biomédica e Ciência da Computação da UFPR">
@@ -15,9 +11,17 @@
 <body>
     <ui-view></ui-view>
     <footer>
-    	<p>Feito com <span class="fa">&#xf004;</span> pelo <a href="//pet.inf.ufpr.br">PET Computação UFPR</a><br/>
+    	<p>Feito com <span class="fa">&#xf004;</span> pelo <a href="http://pet.inf.ufpr.br">PET Computação UFPR</a><br/>
     	&copy; 2015
     	</p>
     </footer>
+    
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/moderacao.js"></script>
+    <script src="js/controllers/homeCtrl.js"></script>
+    <script src="js/controllers/searchCtrl.js"></script>
+    <script src="js/controllers/materiaCtrl.js"></script>
 </body>
 </html>

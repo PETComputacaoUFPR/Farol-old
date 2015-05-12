@@ -45,8 +45,16 @@ $margin: 20px;
     padding-right: $padding;
 }
 
-.center-text{
+.text-center{
     text-align: center;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
 }
 
 .center-vertical{

@@ -8,6 +8,7 @@ $font-size: 1.3em;
 @import "colors";
 @import "positioning";
 @import "buttons";
+@import "cards";
 
 body{
 	font-family: Merriweather, serif;
@@ -38,6 +39,12 @@ header{
 	font-family: Montserrat, sans-serif;
 	padding: 5px 0 5px 0;
 	color: white;
+	a{
+		color: white;
+		&:hover{
+			color: white;
+		}
+	}
 }
 
 footer{
