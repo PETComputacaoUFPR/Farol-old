@@ -4,6 +4,9 @@ angular.module('farol', [
     'farol.search',
     'farol.moderacao'
 ]).
-config(['$urlRouterProvider', function ($urlRouterProvider) {
+config(['$urlRouterProvider', '$httpProvider', function ($urlRouterProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/home');
+    
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);

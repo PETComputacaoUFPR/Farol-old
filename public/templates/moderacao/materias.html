@@ -4,4 +4,10 @@
 <div ng-repeat="materia in materias | filter:query" class="card one-third inline-block">
     <h3>{{materia.codigo}}</h3>
     <p>{{materia.nome}}</p>
+    <button type="button" class="button red hover-shadow" ng-click="delete(materia.codigo)">
+        <i class="fa fa-close fa-fw"></i>
+    </button>
+    <button type="button" class="button normal hover-shadow" ng-click="edit(materia.codigo)">
+        <i class="fa fa-edit fa-fw"></i>
+    </button>
 </div>
