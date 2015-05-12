@@ -1,2 +1,2 @@
-# Falésia
-### Frontend para o [Farol](https://github.com/PETComputacaoUFPR/Farol)
+# Pontal
+### Cliente web feito com Angular.js para o [Farol](https://github.com/PETComputacaoUFPR/Farol)
