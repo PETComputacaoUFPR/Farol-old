@@ -13,22 +13,20 @@ angular.module('farol.moderacao.materia', ['ui.router'])
     $scope.materias = [];
     atualizaMaterias();
     
-    
     $scope.delete = function(codigo){
-        console.log("Deletando matéria com código: " + codigo);
         $http.delete('http://pet.inf.ufpr.br/farol/api/v1/materias/' + codigo)
         .success(function (data, status){
             atualizaMaterias();
-            console.log(data);
+            alert("Deletado " + codigo);
         })
         .error(function (data){
             console.log(data);
         });
-    }
+    };
     
     $scope.edit = function(codigo){
         console.log("Editando a matérica com código: " + codigo);
-    }
+    };
     
     function atualizaMaterias(){
         $http.get('http://pet.inf.ufpr.br/farol/api/v1/materias')
