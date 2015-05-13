@@ -10,5 +10,11 @@ angular.module('farol.moderacao.home', ['ui.router'])
 }])
 
 .controller('ModeracaoHomeCtrl', ['$scope', '$http', function ($scope, $http){
-    $scope.pendentes = 2;
+    $scope.pendentes = 0;
+    
+    $http.get('http://pet.inf.ufpr.br/farol/api/v1/arquivos/status/pendente')
+    .success(function (data, status){
+        $scope.pendentes = data.length;
+    });
+    
 }]);
