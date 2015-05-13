@@ -10,5 +10,13 @@ angular.module('farol.moderacao.usuario', ['ui.router'])
 }])
 
 .controller('UsuarioCtrl', ['$scope', '$http', function ($scope, $http){
+    $scope.uploads = [];
+    atualizarUsuarios();
     
+    function atualizarUsuarios(){
+        $http.get('http://pet.inf.ufpr.br/farol/api/v1/u/')
+        .success(function (data, status){
+            $scope.usuarios = data;
+        });
+    }
 }]);

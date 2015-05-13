@@ -17,3 +17,9 @@
 %box-size{
     box-sizing: border-box;
 }
+
+%clearfix:after, %clearfix:before{
+    display: block;
+    clear: both;
+    content: '';
+}

@@ -1,8 +1,10 @@
-<div class="card">
-    <ul class="text-left">
-        <li><a href="#/moderacao/uploads">Uploads</a></li>
-        <li><a href="#/moderacao/materias">Materias</a></li>
-        <li><a href="#/moderacao/professores">Professores</a></li>
-        <li><a href="#/moderacao/usuarios">Usuários</a></li>
-    </ul>
+<div class="card text-left">
+    <p><a href="#/moderacao/uploads">
+        <ng-pluralize count="pendentes" 
+            when="{'0': 'Não há uploads pendentes.',
+            'one': 'Existe 1 upload pendente de aprovação.',
+            'other': 'Existem {} uploads pendentes de aprovação.'
+            }">
+        </ng-pluralize> 
+    </a></p>
 </div>

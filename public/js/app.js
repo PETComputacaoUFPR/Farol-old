@@ -3,8 +3,9 @@ angular.module('farol', [
     'farol.home',
     'farol.search',
     'farol.moderacao'
-]).
-config(['$urlRouterProvider', '$httpProvider', function ($urlRouterProvider, $httpProvider) {
+])
+
+.config(['$urlRouterProvider', '$httpProvider', function ($urlRouterProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/home');
     
     $httpProvider.defaults.useXDomain = true;

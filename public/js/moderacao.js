@@ -1,6 +1,10 @@
 angular.module('farol.moderacao', [
     'ui.router',
-    'farol.moderacao.materia'
+    'farol.moderacao.home',
+    'farol.moderacao.materia',
+    'farol.moderacao.professor',
+    'farol.moderacao.upload',
+    'farol.moderacao.usuario'
 ]).
 config(['$stateProvider', function ($stateProvider){
     $stateProvider
@@ -8,9 +12,5 @@ config(['$stateProvider', function ($stateProvider){
         abstract: true,
         url: '/moderacao',
         templateUrl: 'templates/moderacao.html'
-    })
-    .state('moderacao.home', {
-        url: '/home',
-        templateUrl: 'templates/moderacao/home.html'
     });
 }]);

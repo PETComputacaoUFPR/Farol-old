@@ -93,3 +93,7 @@ $margin: 20px;
 .inline-block{
     display: inline-block;
 }
+
+.clearfix{
+    @extend %clearfix;
+}

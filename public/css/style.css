@@ -3,6 +3,11 @@
 .card {
   box-sizing: border-box; }
 
+.clearfix:after, .clearfix:before {
+  display: block;
+  clear: both;
+  content: ''; }
+
 .normal {
   background-color: #39628d; }
 
@@ -43,11 +48,11 @@
   margin-top: 20px;
   margin-bottom: 20px; }
 
-.margin-horizontal {
+.margin-horizontal, nav a {
   margin-left: 20px;
   margin-right: 20px; }
 
-.padding {
+.padding, nav {
   padding: 20px; }
 
 .no-padding {
@@ -175,15 +180,19 @@ a {
 form {
   margin: 0 auto; }
 
+header, nav {
+  font-family: Montserrat, sans-serif; }
+
 header {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  font-family: Montserrat, sans-serif;
   padding: 5px 0 5px 0;
   color: white; }
   header a {
     color: white; }
     header a:hover {
       color: white; }
+  header h3 {
+    font-weight: 100; }
 
 footer {
   color: white;
@@ -196,6 +205,9 @@ footer {
     color: white; }
     footer a:hover {
       color: #1a1a1a; }
+
+nav {
+  font-weight: 100; }
 
 .index {
   background-position: center center;
