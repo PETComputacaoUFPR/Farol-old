@@ -1,7 +1,27 @@
-<div class="card text-left">
-    <ul>
-        <li ng-repeat="materia in materias">
-            {{materia.codigo}} - {{materia.nome}}
+<div class="card card-list">
+    <ul class="list">
+        <h2 class="list-title">Matérias</h2>
+        <input type="search" name="filter" ng-model="query" class="search-bar margin-vertical two-thirds" placeholder="Busca" />
+        <li ng-repeat="materia in materias | filter: query" class="list-item text-left">
+            {{materia.codigo}} - 
+            <span ng-show="!materia.editing" ng-click="edit(materia)" class="clickable">{{materia.nome}}</span>
+            <input type="text" name="nome" ng-model="materia.nome" ng-show="materia.editing" 
+                show-focus="materia.editing" ui-keypress="{13:'update(materia)'}"/>
+            <div class="float-right">
+                <button type="button" class="button normal hover-shadow" ng-click="edit(materia)" ng-show="!materia.editing">
+                    <i class="fa fa-edit fa-fw"></i>
+                </button>
+                <button type="button" class="button red hover-shadow" ng-click="delete(materia.codigo)" ng-show="!materia.editing">
+                    <i class="fa fa-close fa-fw"></i>
+                </button>
+                <button type="button" class="button dark hover-shadow" ng-click="update(materia)" ng-show="materia.editing">
+                    <i class="fa fa-check fa-fw"></i>
+                </button>
+                <button type="button" class="button darker hover-shadow" ng-click="edit(materia)" ng-show="materia.editing">
+                    <i class="fa fa-close fa-fw"></i>
+                </button>
+            </div>
         </li>
+        <li ng-show="!materias.length" class="list-item">Não há matérias cadastrados</li>
     </ul>
 </div>
