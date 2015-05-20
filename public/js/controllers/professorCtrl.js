@@ -15,7 +15,7 @@ angular.module('farol.moderacao.professor', ['ui.router'])
     
     $scope.save = function(professor){
         console.log(professor);
-        $http.post('http://pet.inf.ufpr.br/farol/api/v1/professores/', {nome:professor.nome})
+        $http.post('http://pet.inf.ufpr.br/farol/api/v1/professores/', professor)
         .success(function (data, status){
             atualizarProfessores();
             alert("Cadastrado" + professor.nome);
