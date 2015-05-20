@@ -107,9 +107,10 @@ nav{
 	box-shadow: inset 0px 1px 3px #ddd;
 	font-size: $font-size;
 	padding: 5px;
-	border: none;
+	border: 1px solid $aqua;
+	box-sizing: border-box;
 	&:focus{
-		border: 1px solid $aqua;
+		border: 1px solid $deep-sea;
 		outline: 0;
 	}
 	&::-webkit-search-cancel-button{
@@ -140,7 +141,7 @@ nav{
     margin: 10px 5px 0 0;
 }
 
-.header-search{
+.header{
 	text-align: left;
 	padding: 21px 0px 21px 10px;
 	h2, form{

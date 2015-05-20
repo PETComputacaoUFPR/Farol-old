@@ -133,11 +133,12 @@
   top: -1.3em; }
 
 .icon-button {
+  border-radius: 0;
   font-family: FontAwesome;
-  font-size: 1.403em;
+  font-size: 1.5em;
   position: relative;
-  top: 1.23px;
-  left: -5px;
+  top: 1.5px;
+  left: -6px;
   color: white;
   padding: 6px;
   -webkit-transition: background-color 0.2s ease-in-out;
@@ -256,9 +257,10 @@ nav {
   box-shadow: inset 0px 1px 3px #ddd;
   font-size: 1.3em;
   padding: 5px;
-  border: none; }
+  border: 1px solid #bfdede;
+  box-sizing: border-box; }
   .search-bar:focus {
-    border: 1px solid #bfdede;
+    border: 1px solid #39628d;
     outline: 0; }
   .search-bar::-webkit-search-cancel-button {
     -webkit-appearance: none; }
@@ -282,17 +284,17 @@ nav {
   border: 1px solid #bfdede;
   margin: 10px 5px 0 0; }
 
-.header-search {
+.header {
   text-align: left;
   padding: 21px 0px 21px 10px; }
-  .header-search h2, .header-search form {
+  .header h2, .header form {
     display: inline-block; }
-  .header-search form .search-bar {
+  .header form .search-bar {
     width: 400px; }
-  .header-search h2 a {
+  .header h2 a {
     color: white;
     text-decoration: none; }
-    .header-search h2 a:hover {
+    .header h2 a:hover {
       text-decoration: underline; }
 
 .warning {

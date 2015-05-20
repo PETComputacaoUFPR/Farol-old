@@ -27,11 +27,12 @@
 
 .icon-button{
     @extend .button;
+    border-radius: 0;
 	font-family: FontAwesome;
-	font-size: $font-size + 0.103em;
+	font-size: $font-size + 0.2em;
 	position: relative;
-	top: 1.23px;
-	left: -5px;
+	top: 1.5px;
+	left: -6px;
 	color: white;
 	padding: 6px;
 	@include transition(background-color, 0.2s, ease-in-out);

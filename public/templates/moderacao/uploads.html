@@ -3,5 +3,8 @@
         <li ng-repeat="upload in uploads">
             {{upload}}
         </li>
+        <li ng-show="!uploads.length">
+            Não há uploads pendentes.
+        </li>
     </ul>
 </div>

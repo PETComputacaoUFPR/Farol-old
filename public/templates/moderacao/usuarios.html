@@ -3,5 +3,8 @@
         <li ng-repeat="usuario in usuarios">
             {{usuario.nome}} - {{usuario.email}}
         </li>
+        <li ng-show="!usuarios.length">
+            Não há usuários cadastrados.
+        </li>
     </ul>
 </div>
