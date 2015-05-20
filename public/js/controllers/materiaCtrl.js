@@ -13,6 +13,20 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
     $scope.materias = [];
     atualizarMaterias();
     
+    $scope.save = function(materia){
+        $http.post('http://pet.inf.ufpr.br/farol/api/v1/materias/', materia)
+        .success(function (data, status){
+            atualizarMaterias();
+            alert("Cadastrado " + materia.codigo);
+            materia.codigo = "";
+            materia.nome = "";
+        })
+        .error(function (data){
+            console.log(data);
+            alert(data.messages);
+        });
+    };
+    
     $scope.delete = function(codigo){
         $http.delete('http://pet.inf.ufpr.br/farol/api/v1/materias/' + codigo)
         .success(function (data, status){

@@ -2,6 +2,14 @@
     <ul class="list">
         <h2 class="list-title">Matérias</h2>
         <input type="search" name="filter" ng-model="query" class="search-bar margin-vertical two-thirds" placeholder="Busca" />
+        <li class="list-item text-left" ng-show="!query.length || !(materias | filter: query).length" ui-keypress="{13:'save(novaMateria)'}">
+            <span>Nova matéria:</span>
+            <input type="text" name="codigo" ng-model="novaMateria.codigo" placeholder="Código"/>
+            <input type="text" name="nome" ng-model="novaMateria.nome" placeholder="Nome"/>
+            <button type="button" class="button dark hover-shadow float-right" ng-click="save(novaMateria)">
+                <i class="fa fa-plus fa-fw"></i>
+            </button>
+        </li>
         <li ng-repeat="materia in materias | filter: query" class="list-item text-left">
             {{materia.codigo}} - 
             <span ng-show="!materia.editing" ng-click="edit(materia)" class="clickable">{{materia.nome}}</span>

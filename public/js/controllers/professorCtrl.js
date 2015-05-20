@@ -13,6 +13,21 @@ angular.module('farol.moderacao.professor', ['ui.router'])
     $scope.professores = [];
     atualizarProfessores();
     
+    $scope.save = function(professor){
+        console.log(professor);
+        $http.post('http://pet.inf.ufpr.br/farol/api/v1/professores/', {nome:professor.nome})
+        .success(function (data, status){
+            atualizarProfessores();
+            alert("Cadastrado" + professor.nome);
+            professor.id = "";
+            professor.nome = "";
+        })
+        .error(function (data){
+            console.log(data);
+            alert(data.messages);
+        });
+    };
+    
     $scope.delete = function(id){
         $http.delete('http://pet.inf.ufpr.br/farol/api/v1/professores/' + id)
         .success(function (data, status){
@@ -41,13 +56,15 @@ angular.module('farol.moderacao.professor', ['ui.router'])
             professor.editing = false;
             return;
         }
-        console.log("Atualizando a matéria com código: " + professor.id);
-        $http.put('http://pet.inf.ufpr.br/farol/api/v1/professores/' + professor.id, {nome: professor.nome})
+        console.log("Atualizando o professor com código: " + professor.id);
+        $http.put('http://pet.inf.ufpr.br/farol/api/v1/professores/' + professor.id, {nome:professor.nome})
         .success(function (data, status){
             alert("Alterado " + professor.nome);
         })
         .error(function (data){
+            professor.nome = professor.nomeAntigo;
             console.log(data);
+            alert(data.messages);
         });
         professor.editing = false;
     };

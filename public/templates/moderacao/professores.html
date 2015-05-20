@@ -2,7 +2,14 @@
     <ul class="list">
         <h2 class="list-title">Professores</h2>
         <input type="search" name="filter" ng-model="query" class="search-bar margin-vertical two-thirds" placeholder="Busca" />
-        <li ng-repeat="professor in professores | filter: query" class="list-item text-left">
+        <li class="list-item text-left" ng-show="!query.length || !(professores | filter: query).length" ui-keypress="{13:'save(novoProfessor)'}">
+            <span>Novo professor:</span>
+            <input type="text" name="nome" ng-model="novoProfessor.nome" placeholder="Nome"/>
+            <button type="button" class="button dark hover-shadow float-right" ng-click="save(novoProfessor)">
+                <i class="fa fa-plus fa-fw"></i>
+            </button>
+        </li>
+        <li ng-repeat="professor in professores | filter: query | orderBy: 'nome'" class="list-item text-left">
             <span ng-show="!professor.editing" ng-click="edit(professor)" class="clickable">{{professor.nome}}</span>
             <input type="text" name="nome" ng-model="professor.nome" ng-show="professor.editing" 
                 show-focus="professor.editing" ui-keypress="{13:'update(professor)'}"/>
