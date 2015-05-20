@@ -8,12 +8,19 @@ $font-size: 1.3em;
 @import "colors";
 @import "positioning";
 @import "buttons";
+@import "lists";
 @import "cards";
+@import "footer";
+
+html{
+	min-height: 100%;
+	position: relative;
+}
 
 body{
 	font-family: Merriweather, serif;
 	color: $squid-ink;
-	padding-bottom: 80px;
+	padding-bottom: $sticky-footer-height;
 	text-align: center;
 	margin: 0;
 	@extend .lighter;
@@ -56,13 +63,9 @@ header{
 footer{
 	@extend .red;
 	color: white;
-	position: fixed;
-	left:0;
-	bottom:0;
-	width:100%;
-	height: 80px;
+	padding: $padding 0 $padding 0; 
 	a{
-		color: white;
+		color: inherit;
 		&:hover{
 			color: $squid-ink;
 		}
@@ -170,4 +173,8 @@ nav{
 		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 		@include transition(box-shadow, 0.2s, ease-in-out);
 	}
+}
+
+.clickable{
+	cursor: pointer;
 }
