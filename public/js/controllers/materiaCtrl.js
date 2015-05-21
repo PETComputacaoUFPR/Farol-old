@@ -17,24 +17,38 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
         $http.post('http://pet.inf.ufpr.br/farol/api/v1/materias/', materia)
         .success(function (data, status){
             atualizarMaterias();
-            alert("Cadastrado " + materia.codigo);
+            swal("Cadastrada!", "A matéria " + materia.nome + " foi cadastrado com sucesso", "success");
             materia.codigo = "";
             materia.nome = "";
         })
-        .error(function (data){
+        .error(function (data, status){
             console.log(data);
-            alert(data.messages);
+            swal("Erro " + status, data.messages, "error");
         });
     };
     
-    $scope.delete = function(codigo){
-        $http.delete('http://pet.inf.ufpr.br/farol/api/v1/materias/' + codigo)
-        .success(function (data, status){
-            atualizarMaterias();
-            alert("Deletado " + codigo);
-        })
-        .error(function (data){
-            console.log(data);
+    $scope.delete = function(materia){
+        swal({
+            title: "Deseja remover " + materia.nome + "?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Deletar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        },
+        function(isConfirm){
+            if(isConfirm){
+                $http.delete('http://pet.inf.ufpr.br/farol/api/v1/materias/' + materia.codigo)
+                .success(function (data, status){
+                    atualizarMaterias();
+                    //alert("Deletado " + materia.nome);
+                    swal("Deletado", materia.nome + " foi deletado com sucesso.", "success");
+                })
+                .error(function (data, status){
+                    console.log(data);
+                    swal("Erro " + status, "Não foi possível deletar " + materia.nome, "error");
+                });
+            }
         });
     };
     
@@ -58,7 +72,7 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
         console.log("Atualizando a matéria com código: " + materia.codigo);
         $http.put('http://pet.inf.ufpr.br/farol/api/v1/materias/' + materia.codigo, {nome: materia.nome})
         .success(function (data, status){
-            alert("Alterado " + materia.nome);
+            swal("Alterado!", "A matéria " + materia.nome + " foi alterada com sucesso", "success");
         })
         .error(function (data){
             console.log(data);
