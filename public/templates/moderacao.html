@@ -1,11 +1,13 @@
 <header class="header">
-    <h2><a href="#/home"><span class="fa">&#xf13d;</span> Farol - Moderação</a></h2>
-    <nav class="float-right">
-        <a href="#/moderacao/home">Home</a>
-        <a href="#/moderacao/uploads">Uploads</a>
-        <a href="#/moderacao/materias">Materias</a>
-        <a href="#/moderacao/professores">Professores</a>
-        <a href="#/moderacao/usuarios">Usuarios</a>
+    <h2 class="no-margin float-left">
+        <a href="#/home"><span class="fa">&#xf13d;</span> Farol - Moderação</a>
+    </h2>
+    <nav class="float-right padding">
+        <a ui-sref="moderacao.home" ui-sref-active="normal" class="padding">Home</a>
+        <a ui-sref="moderacao.upload" ui-sref-active="normal" class="padding">Uploads</a>
+        <a ui-sref="moderacao.materia" ui-sref-active="normal" class="padding">Materias</a>
+        <a ui-sref="moderacao.professor" ui-sref-active="normal" class="padding">Professores</a>
+        <a ui-sref="moderacao.usuario" ui-sref-active="normal" class="padding">Usuarios</a>
     </nav>
 </header>
 <section ui-view class="padding">

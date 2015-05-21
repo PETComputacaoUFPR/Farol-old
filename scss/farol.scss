@@ -72,15 +72,6 @@ footer{
 	}
 }
 
-nav{
-	@extend .padding;
-	//font-size: 1.1em;
-	font-weight: 100;
-	a{
-		@extend .margin-horizontal;
-	}
-}
-
 .index{
 	//background-image: url(../imgs/lighthouse.png);
 	background-position: center center;
@@ -143,7 +134,16 @@ nav{
 
 .header{
 	text-align: left;
-	padding: 21px 0px 21px 10px;
+	padding: 0;//0px 10px 0px 10px;
+	@extend %clearfix;
+	height: 100%;
+	nav{
+		//min-height: 29px;
+		display: inline-block;
+		height: 100%;
+		position: relative;
+		bottom:0;
+	}
 	h2, form{
 		display: inline-block;
 	}
@@ -153,6 +153,7 @@ nav{
 		}
 	}
 	h2{
+		padding: $padding $padding 0 $padding;
 		a{
 			color: white;
 			text-decoration: none;
