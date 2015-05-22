@@ -18,24 +18,43 @@ angular.module('farol.moderacao.professor', ['ui.router'])
         $http.post('http://pet.inf.ufpr.br/farol/api/v1/professores/', professor)
         .success(function (data, status){
             atualizarProfessores();
-            alert("Cadastrado" + professor.nome);
-            professor.id = "";
+            swal("Cadastrado!", "Professor " + professor.nome + " foi cadastrado com sucesso", "success");
             professor.nome = "";
         })
-        .error(function (data){
+        .error(function (data, status){
             console.log(data);
-            alert(data.messages);
+            swal("Erro " + status, data.messages, "error");
         });
     };
     
-    $scope.delete = function(id){
-        $http.delete('http://pet.inf.ufpr.br/farol/api/v1/professores/' + id)
-        .success(function (data, status){
-            atualizarProfessores();
-            alert("Deletado " + id);
-        })
-        .error(function (data){
-            console.log(data);
+    $scope.delete = function(professor){
+        swal({
+            title: "Deseja remover " + professor.nome + "?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Deletar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        },
+        function(isConfirm){
+            if(isConfirm){
+                swal({
+                    title: "Processando...",
+                    type: "info",
+                    showConfirmButton: false
+                });
+                $http.delete('http://pet.inf.ufpr.br/farol/api/v1/professores/' + professor.id)
+                .success(function (data, status){
+                    atualizarProfessores();
+                    swal("Deletado", professor.nome + " foi deletado com sucesso.", "success");
+                })
+                .error(function (data, status){
+                    console.log(data);
+                    swal("Erro " + status, "Não foi possível deletar " + professor.nome, "error");
+                });
+            }
         });
     };
     
