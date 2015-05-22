@@ -34,10 +34,17 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
             showCancelButton: true,
             confirmButtonText: "Deletar",
             cancelButtonText: "Cancelar",
-            closeOnConfirm: false
+            closeOnConfirm: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false
         },
         function(isConfirm){
             if(isConfirm){
+                swal({
+                    title: "Processando...",
+                    type: "info",
+                    showConfirmButton: false
+                });
                 $http.delete('http://pet.inf.ufpr.br/farol/api/v1/materias/' + materia.codigo)
                 .success(function (data, status){
                     atualizarMaterias();
