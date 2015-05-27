@@ -1,11 +1,11 @@
 {
-  "name": "Falesia",
+  "name": "Farol",
   "version": "0.0.0",
-  "homepage": "https://github.com/VytorCalixto/Falesia",
+  "homepage": "https://github.com/PETComputacaoUFPR",
   "authors": [
     "PET Computação UFPR <pet@inf.ufpr.br>"
   ],
-  "description": "Frontend para o Farol",
+  "description": "Farol - Respositório de provas e trabalhos",
   "main": "index.html",
   "keywords": [
     "ufpr",
@@ -25,6 +25,7 @@
     "components-font-awesome": "~4.3.0",
     "angular-ui-router": "~0.2.14",
     "angular-ui-utils": "bower-keypress",
-    "sweetalert": "~0.5.0"
+    "sweetalert": "~0.5.0",
+    "angular-file-upload": "~1.1.5"
   }
 }

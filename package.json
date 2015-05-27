@@ -1,7 +1,7 @@
 {
-  "name": "Falesia",
+  "name": "Farol",
   "version": "0.0.0",
-  "description": "Frontend para o Farol",
+  "description": "Farol - Repositório de provas e trabalhos",
   "main": "index.html",
   "dependencies": {
     "bower": "^1.4.1"
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/VytorCalixto/Falesia.git"
+    "url": "https://github.com/PETComputacaoUFPR/Farol.git"
   },
   "keywords": [
     "farol",
@@ -26,8 +26,8 @@
   ],
   "author": "PET Computação UFPR",
   "bugs": {
-    "url": "https://github.com/VytorCalixto/Falesia/issues"
+    "url": "https://github.com/PETComputacaoUFPR/Farol/issues"
   },
-  "homepage": "https://github.com/VytorCalixto/Falesia",
+  "homepage": "https://github.com/PETComputacaoUFPR/Farol",
   "private": true
 }
