@@ -11,7 +11,7 @@ Departamento de Informática da UFPR. Ele roda sob uma API REST chamada [Titanic
 e utiliza o Angular.js. O Farol armazena imagens e pdfs das provas e permite o upload e a busca destas.
 
 # Instalação
-A versão atual da API (0.0.0) está disponível no site do [PET Computação](http://pet.inf.ufpr.br/api/v1).
+A versão atual da API (0.0.0) está disponível no site do [PET Computação](http://pet.inf.ufpr.br/farol/api/v1).
 Você precisa que ela esteja funcionando para fazer as requisições.
 
 Clone o projeto e instale as dependências rodando `npm install` e `bower install` e
