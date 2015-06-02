@@ -237,14 +237,17 @@ footer {
       color: #1a1a1a; }
 
 .index {
+  background-image: url(../imgs/Farol.png);
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
+  margin-top: 20px;
   padding-top: 20%;
   height: 100%; }
   .index h1 {
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5em;
+    font-size: 5em;
     text-transform: uppercase;
     color: #1E2251;
     text-shadow: -1px -1px 0 #F5F5F5, 1px -1px 0 #F5F5F5, -1px 1px 0 #F5F5F5, 1px 1px 0 #F5F5F5; }
