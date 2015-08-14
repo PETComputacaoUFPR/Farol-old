@@ -5,12 +5,21 @@ angular.module('farol.moderacao', [
     'farol.moderacao.professor',
     'farol.moderacao.upload',
     'farol.moderacao.usuario'
-]).
-config(['$stateProvider', function ($stateProvider){
+])
+
+.config(['$stateProvider', function ($stateProvider){
     $stateProvider
     .state('moderacao', {
         abstract: true,
         url: '/moderacao',
-        templateUrl: 'templates/moderacao.html'
+        templateUrl: 'templates/moderacao.html',
+        controller: 'ModeracaoCtrl',
+        data: {
+            requireLogin: true
+        }
     });
+}])
+
+.controller('ModeracaoCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $scope.currentUser = $rootScope.currentUser;
 }]);

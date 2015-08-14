@@ -1,13 +1,14 @@
 <div class="clearfix padding-horizontal">
 	<div class="float-right">
-		<a href="">Login</a>
-		|
-		<a href="#/moderacao/home">Admin</a>
+		<a ui-sref="login" ng-if="!currentUser">Entrar</a>
+		<a href="#/moderacao/home" ng-if="currentUser">Sua conta</a>
+		<span ng-if="currentUser.moderador">|</span>
+		<a href="#/moderacao/home" ng-if="currentUser.moderador">Admin</a>
 	</div>
 	<section class="index">
 		<h1>Farol</h1>
 		<form ng-submit="buscar()">
-			<input type="search" placeholder="O que você procura?" name="search" 
+			<input type="search" placeholder="O que você procura?" name="search"
 			    class="search-bar two-thirds" autofocus required ng-model="query">
 			<!-- Value do submit foi retirado daqui: http://fortawesome.github.io/Font-Awesome/cheatsheet/-->
 			<input type="submit" class="icon-button dark" value="&#xf002;">

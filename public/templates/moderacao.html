@@ -7,9 +7,9 @@
         <a ui-sref="moderacao.upload" ui-sref-active="normal" class="padding">Uploads</a>
         <a ui-sref="moderacao.materia" ui-sref-active="normal" class="padding">Materias</a>
         <a ui-sref="moderacao.professor" ui-sref-active="normal" class="padding">Professores</a>
-        <a ui-sref="moderacao.usuario" ui-sref-active="normal" class="padding">Usuarios</a>
+        <a ui-sref="moderacao.usuario" ui-sref-active="normal" class="padding" ng-if="currentUser.admin">Usuarios</a>
     </nav>
 </header>
 <section ui-view class="padding">
-    
+
 </section>
