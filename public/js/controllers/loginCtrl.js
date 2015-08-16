@@ -1,8 +1,4 @@
-'use strict';
-
-angular.module('farol.login', ['ui.router', 'farol.token'])
-
-.config(['$stateProvider', function($stateProvider) {
+farol.config(['$stateProvider', function($stateProvider) {
     $stateProvider
     .state('login', {
         url: '/login',
@@ -16,9 +12,14 @@ angular.module('farol.login', ['ui.router', 'farol.token'])
 
 .controller('LoginCtrl', ['$scope', '$location', '$rootScope', '$http', 'API', 'TokenHandler', '$window', function ($scope, $location, $rootScope, $http, API, TokenHandler, $window) {
     if($rootScope.currentUser === 'not logged' || !$rootScope.currentUser) {
-        if(TokenHandler.get() !== 'none') {
-            // Pega as informações do usuário e seta no rootScope
-        }
+        TokenHandler.getMe()
+        .success(function(data, status) {
+            console.log(data);
+            $rootScope.currentUser = data;
+        })
+        .error(function(data, status) {
+            console.log(data);
+        });
     }
 
     $scope.login = function(user) {

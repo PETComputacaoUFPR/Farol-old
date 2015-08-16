@@ -1,8 +1,4 @@
-'use strict';
-
-angular.module('farol.token', [])
-
-.factory('TokenHandler', function($window, $http, API, $rootScope) {
+farol.factory('TokenHandler', function($window, $http, API, $rootScope) {
     var tokenHandler = {};
     var token = 'none';
 

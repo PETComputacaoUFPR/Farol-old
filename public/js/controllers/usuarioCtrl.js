@@ -1,6 +1,4 @@
-angular.module('farol.moderacao.usuario', ['ui.router'])
-
-.config(['$stateProvider', function ($stateProvider){
+farol.config(['$stateProvider', function ($stateProvider){
     $stateProvider
     .state('moderacao.usuario',{
         url: '/usuarios',
@@ -12,7 +10,7 @@ angular.module('farol.moderacao.usuario', ['ui.router'])
 .controller('UsuarioCtrl', ['$scope', '$http', function ($scope, $http){
     $scope.uploads = [];
     atualizarUsuarios();
-    
+
     function atualizarUsuarios(){
         $http.get('http://pet.inf.ufpr.br/farol/api/v1/u/')
         .success(function (data, status){

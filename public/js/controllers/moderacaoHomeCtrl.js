@@ -1,6 +1,4 @@
-angular.module('farol.moderacao.home', ['ui.router'])
-
-.config(['$stateProvider', function ($stateProvider){
+farol.config(['$stateProvider', function ($stateProvider){
     $stateProvider
     .state('moderacao.home',{
         url: '/home',
@@ -11,10 +9,10 @@ angular.module('farol.moderacao.home', ['ui.router'])
 
 .controller('ModeracaoHomeCtrl', ['$scope', '$http', function ($scope, $http){
     $scope.pendentes = 0;
-    
+
     $http.get('http://pet.inf.ufpr.br/farol/api/v1/arquivos/status/pendente')
     .success(function (data, status){
         $scope.pendentes = data.length;
     });
-    
+
 }]);

@@ -1,8 +1,4 @@
-'use strict';
-
-angular.module('farol.search', ['ui.router'])
-
-.config(['$stateProvider', function($stateProvider) {
+farol.config(['$stateProvider', function($stateProvider) {
     $stateProvider
     .state('busca',{
         url: '/busca/:query',

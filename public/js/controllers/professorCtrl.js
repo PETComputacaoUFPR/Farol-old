@@ -1,6 +1,4 @@
-angular.module('farol.moderacao.professor', ['ui.router'])
-
-.config(['$stateProvider', function ($stateProvider){
+farol.config(['$stateProvider', function ($stateProvider){
     $stateProvider
     .state('moderacao.professor',{
         url: '/professores',
@@ -12,7 +10,7 @@ angular.module('farol.moderacao.professor', ['ui.router'])
 .controller('ProfessorCtrl', ['$scope', '$http', function ($scope, $http){
     $scope.professores = [];
     atualizarProfessores();
-    
+
     $scope.save = function(professor){
         console.log(professor);
         $http.post('http://pet.inf.ufpr.br/farol/api/v1/professores/', professor)
@@ -26,7 +24,7 @@ angular.module('farol.moderacao.professor', ['ui.router'])
             swal("Erro " + status, data.messages, "error");
         });
     };
-    
+
     $scope.delete = function(professor){
         swal({
             title: "Deseja remover " + professor.nome + "?",
@@ -57,7 +55,7 @@ angular.module('farol.moderacao.professor', ['ui.router'])
             }
         });
     };
-    
+
     $scope.edit = function(professor){
         // Restaura o valor antigo caso perca foco ou seja cancelado
         if(professor.editing){
@@ -67,7 +65,7 @@ angular.module('farol.moderacao.professor', ['ui.router'])
         }
         professor.editing = !professor.editing;
     };
-    
+
     $scope.update = function(professor){
         // Se o "novo" nome for igual ao antigo, retornamos
         // Isso poupa o servidor (mas deveria ser trabalho dele fazer isso)
@@ -87,7 +85,7 @@ angular.module('farol.moderacao.professor', ['ui.router'])
         });
         professor.editing = false;
     };
-    
+
     function atualizarProfessores(){
         $http.get('http://pet.inf.ufpr.br/farol/api/v1/professores')
         .success(function (data, status){

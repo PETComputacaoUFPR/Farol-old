@@ -1,11 +1,7 @@
-angular.module('farol', [
+var farol = angular.module('farol', [
     'ui.router',
     'ui.keypress',
-    'farol.token',
-    'farol.home',
-    'farol.login',
-    'farol.search',
-    'farol.moderacao'
+    'ngResource'
 ])
 
 .constant('API', {
@@ -21,16 +17,24 @@ angular.module('farol', [
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }])
 
-.run(['$rootScope', '$state', function($rootScope, $state) {
+.run(['$rootScope', '$state', 'TokenHandler', function($rootScope, $state, TokenHandler) {
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
         var requireLogin = toState.data.requireLogin;
 
-        if(requireLogin && typeof $rootScope.currentUser === 'undefined') {
-            event.preventDefault();
-            $rootScope.currentUser = 'not logged';
-            console.log(toState);
-            console.log(toParams);
-            return $state.go('login');
+        if(typeof $rootScope.currentUser === 'undefined') {
+            TokenHandler.getMe()
+            .success(function(data) {
+                $rootScope.currentUser = data;
+            })
+            .error(function(data) {
+                if(requireLogin) {
+                    event.preventDefault();
+                    $rootScope.currentUser = 'not logged';
+                    console.log(toState);
+                    console.log(toParams);
+                    return $state.go('login');
+                }
+            })
         }
     })
 }])

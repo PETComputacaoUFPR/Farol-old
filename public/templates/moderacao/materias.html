@@ -11,9 +11,9 @@
             </button>
         </li>
         <li ng-repeat="materia in materias | filter: query" class="list-item text-left">
-            {{materia.codigo}} - 
+            {{materia.codigo}} -
             <span ng-show="!materia.editing" ng-click="edit(materia)" class="clickable">{{materia.nome}}</span>
-            <input type="text" name="nome" ng-model="materia.nome" ng-show="materia.editing" 
+            <input type="text" name="nome" ng-model="materia.nome" ng-show="materia.editing"
                 show-focus="materia.editing" ui-keypress="{13:'update(materia)'}"/>
             <div class="float-right">
                 <button type="button" class="button normal hover-shadow" ng-click="edit(materia)" ng-show="!materia.editing">
@@ -30,6 +30,6 @@
                 </button>
             </div>
         </li>
-        <li ng-show="!materias.length" class="list-item">Não há matérias cadastrados</li>
+        <li ng-show="!materias.length" class="list-item">Não há matérias cadastradas</li>
     </ul>
 </div>
