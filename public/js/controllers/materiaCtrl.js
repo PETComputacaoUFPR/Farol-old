@@ -20,7 +20,7 @@ farol.config(['$stateProvider', function ($stateProvider){
             $scope.novaMateria.nome = "";
         }, function(err) {
             console.log(err);
-            swal("Erro!", err, "error");
+            swal("Erro!", "Não foi possível salvar " + materia.nome, "error");
         });
     };
 
@@ -47,7 +47,7 @@ farol.config(['$stateProvider', function ($stateProvider){
                     swal("Deletado", "A matéria" + materia.nome + " foi deletada com sucesso.", "success");
                 }, function(err) {
                     console.log(err);
-                    swal("Erro!", err, "error");
+                    swal("Erro!", "Não foi possível deletar " + materia.nome, "error");
                 });
             }
         });
@@ -70,12 +70,11 @@ farol.config(['$stateProvider', function ($stateProvider){
             materia.editing = false;
             return;
         }
-        console.log("Atualizando a matéria com código: " + materia.codigo);
         materia.$update(function() {
             swal("Alterado!", "A matéria " + materia.nome + " foi alterada com sucesso", "success");
         }, function(err) {
             console.log(err);
-            swal("Erro!", err, "error");
+            swal("Erro!", "Não foi possível atualizar " + materia.nome, "error");
         });
         materia.editing = false;
     };
