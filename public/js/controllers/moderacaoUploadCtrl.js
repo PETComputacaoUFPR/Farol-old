@@ -7,14 +7,11 @@ farol.config(['$stateProvider', function ($stateProvider){
     });
 }])
 
-.controller('UploadCtrl', ['$scope', '$http', function ($scope, $http){
+.controller('UploadCtrl', ['$scope', 'Arquivo', function ($scope, Arquivo){
     $scope.uploads = [];
     atualizarUploads();
 
     function atualizarUploads(){
-        $http.get('http://pet.inf.ufpr.br/farol/api/v1/arquivos/status/pendente')
-        .success(function (data, status){
-            $scope.uploads = data;
-        });
+        $scope.uploads = Arquivo.status({status: 'pendente'});
     }
 }]);

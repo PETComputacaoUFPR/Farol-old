@@ -1,9 +1,11 @@
-<div class="card text-left">
-    <ul>
-        <li ng-repeat="upload in uploads">
-            {{upload}}
+<div class="card card-list">
+    <ul class="list">
+        <h2 class="list-title">Arquivos pendentes</h2>
+        <li ng-repeat="upload in uploads.arquivos" class="list-item text-left">
+            {{upload.tipo}} {{upload.substitutiva ? 'Substitutiva' : ''}} {{upload.numero}} {{upload.materia}}
+            <br>Upload feito por {{upload.usuario.nome}}
         </li>
-        <li ng-show="!uploads.length">
+        <li ng-show="!uploads.arquivos.length">
             Não há uploads pendentes.
         </li>
     </ul>
