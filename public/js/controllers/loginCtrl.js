@@ -11,16 +11,6 @@ farol.config(['$stateProvider', function($stateProvider) {
 }])
 
 .controller('LoginCtrl', ['$scope', '$location', '$rootScope', '$http', 'API', 'TokenHandler', '$window', function ($scope, $location, $rootScope, $http, API, TokenHandler, $window) {
-    if($rootScope.currentUser === 'not logged' || !$rootScope.currentUser) {
-        TokenHandler.getMe()
-        .success(function(data, status) {
-            console.log(data);
-            $rootScope.currentUser = data;
-        })
-        .error(function(data, status) {
-            console.log(data);
-        });
-    }
 
     $scope.login = function(user) {
         var payload = {
