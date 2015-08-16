@@ -7,21 +7,19 @@ farol.config(['$stateProvider', function ($stateProvider){
     });
 }])
 
-.controller('ProfessorCtrl', ['$scope', '$http', function ($scope, $http){
+.controller('ProfessorCtrl', ['$scope', '$http', 'Professor', function ($scope, $http, Professor){
     $scope.professores = [];
     atualizarProfessores();
+    $scope.novoProfessor = new Professor();
 
     $scope.save = function(professor){
-        console.log(professor);
-        $http.post('http://pet.inf.ufpr.br/farol/api/v1/professores/', professor)
-        .success(function (data, status){
+        professor.$save(function() {
             atualizarProfessores();
             swal("Cadastrado!", "Professor " + professor.nome + " foi cadastrado com sucesso", "success");
             professor.nome = "";
-        })
-        .error(function (data, status){
-            console.log(data);
-            swal("Erro " + status, data.messages, "error");
+        }, function(err) {
+            console.log(err);
+            swal("Erro!", "Não foi possível salvar " + professor.nome, "error");
         });
     };
 
@@ -43,14 +41,12 @@ farol.config(['$stateProvider', function ($stateProvider){
                     type: "info",
                     showConfirmButton: false
                 });
-                $http.delete('http://pet.inf.ufpr.br/farol/api/v1/professores/' + professor.id)
-                .success(function (data, status){
+                professor.$delete(function() {
                     atualizarProfessores();
                     swal("Deletado", professor.nome + " foi deletado com sucesso.", "success");
-                })
-                .error(function (data, status){
-                    console.log(data);
-                    swal("Erro " + status, "Não foi possível deletar " + professor.nome, "error");
+                }, function(err) {
+                    console.log(err);
+                    swal("Erro!", "Não foi possível deletar " + professor.nome, "error")
                 });
             }
         });
@@ -73,23 +69,16 @@ farol.config(['$stateProvider', function ($stateProvider){
             professor.editing = false;
             return;
         }
-        console.log("Atualizando o professor com código: " + professor.id);
-        $http.put('http://pet.inf.ufpr.br/farol/api/v1/professores/' + professor.id, {nome:professor.nome})
-        .success(function (data, status){
-            alert("Alterado " + professor.nome);
-        })
-        .error(function (data){
-            professor.nome = professor.nomeAntigo;
-            console.log(data);
-            alert(data.messages);
+        professor.$update(function() {
+            swal("Alterado!", "Alterado " + professor.nome + " com sucesso.", "success");
+        }, function(err) {
+            console.log(err);
+            swal("Erro!", "Não foi possível alterar " + professor.nome, "error")
         });
         professor.editing = false;
     };
 
     function atualizarProfessores(){
-        $http.get('http://pet.inf.ufpr.br/farol/api/v1/professores')
-        .success(function (data, status){
-            $scope.professores = data;
-        });
+        $scope.professores = Professor.query();
     }
 }]);
