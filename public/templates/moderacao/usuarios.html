@@ -1,6 +1,6 @@
 <div class="card card-list">
     <ul class="list">
-        <h2 class="list-title">Usuarios</h2>
+        <h2 class="list-title">Usuários</h2>
         <input type="search" name="filter" ng-model="query" class="search-bar margin-vertical two-thirds" placeholder="Busca" />
         <li ng-repeat="usuario in usuarios | filter: query" class="list-item text-left">
             {{usuario.username}} - {{usuario.nome}}
