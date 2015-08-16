@@ -7,12 +7,9 @@ farol.config(['$stateProvider', function ($stateProvider){
     });
 }])
 
-.controller('ModeracaoHomeCtrl', ['$scope', '$http', function ($scope, $http){
+.controller('ModeracaoHomeCtrl', ['$scope', 'Arquivo', function ($scope, Arquivo){
     $scope.pendentes = 0;
 
-    $http.get('http://pet.inf.ufpr.br/farol/api/v1/arquivos/status/pendente')
-    .success(function (data, status){
-        $scope.pendentes = data.length;
-    });
+    $scope.pendentes = Arquivo.status({status: 'pendente'});
 
 }]);
