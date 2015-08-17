@@ -19,6 +19,6 @@ farol.factory('Usuario', function($resource, API, TokenHandler) {
         }
     });
 
-    resource = TokenHandler.wrapActions(resource, ['query', 'update', 'save', 'delete', 'editMe', 'block']);
+    resource = TokenHandler.wrapActions(resource, ['query', 'update', 'delete', 'editMe', 'block']);
     return resource;
 })
