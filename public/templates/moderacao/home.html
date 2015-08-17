@@ -1,10 +1,10 @@
 <div class="card text-left">
     <p><a href="#/moderacao/uploads">
-        <ng-pluralize count="pendentes" 
+        <ng-pluralize count="pendentes.arquivos.length" 
             when="{'0': 'Não há uploads pendentes.',
             'one': 'Existe 1 upload pendente de aprovação.',
             'other': 'Existem {} uploads pendentes de aprovação.'
             }">
-        </ng-pluralize> 
+        </ng-pluralize>
     </a></p>
 </div>

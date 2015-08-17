@@ -1,6 +1,4 @@
-angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
-
-.config(['$stateProvider', function ($stateProvider){
+farol.config(['$stateProvider', function ($stateProvider){
     $stateProvider
     .state('moderacao.materia',{
         url: '/materias',
@@ -9,24 +7,23 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
     });
 }])
 
-.controller('MateriaCtrl', ['$scope', '$http', function ($scope, $http){
+.controller('MateriaCtrl', ['$scope', '$http', 'Materia', function ($scope, $http, Materia){
     $scope.materias = [];
     atualizarMaterias();
-    
+    $scope.novaMateria = new Materia();
+
     $scope.save = function(materia){
-        $http.post('http://pet.inf.ufpr.br/farol/api/v1/materias/', materia)
-        .success(function (data, status){
+        materia.$save(function() {
             atualizarMaterias();
-            swal("Cadastrada!", "A matéria " + materia.nome + " foi cadastrado com sucesso", "success");
-            materia.codigo = "";
-            materia.nome = "";
-        })
-        .error(function (data, status){
-            console.log(data);
-            swal("Erro " + status, data.messages, "error");
+            swal("Cadastrada!", "A matéria " + materia.nome + " foi cadastrada com sucesso", "success");
+            $scope.novaMateria.codigo = "";
+            $scope.novaMateria.nome = "";
+        }, function(err) {
+            console.log(err);
+            swal("Erro!", "Não foi possível salvar " + materia.nome, "error");
         });
     };
-    
+
     $scope.delete = function(materia){
         swal({
             title: "Deseja remover " + materia.nome + "?",
@@ -45,20 +42,17 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
                     type: "info",
                     showConfirmButton: false
                 });
-                $http.delete('http://pet.inf.ufpr.br/farol/api/v1/materias/' + materia.codigo)
-                .success(function (data, status){
+                materia.$delete(function() {
                     atualizarMaterias();
-                    //alert("Deletado " + materia.nome);
-                    swal("Deletado", materia.nome + " foi deletado com sucesso.", "success");
-                })
-                .error(function (data, status){
-                    console.log(data);
-                    swal("Erro " + status, "Não foi possível deletar " + materia.nome, "error");
+                    swal("Deletado", "A matéria" + materia.nome + " foi deletada com sucesso.", "success");
+                }, function(err) {
+                    console.log(err);
+                    swal("Erro!", "Não foi possível deletar " + materia.nome, "error");
                 });
             }
         });
     };
-    
+
     $scope.edit = function(materia){
         // Restaura o valor antigo caso perca foco ou seja cancelado
         if(materia.editing){
@@ -68,29 +62,24 @@ angular.module('farol.moderacao.materia', ['ui.router', 'ui.keypress'])
         }
         materia.editing = !materia.editing;
     };
-    
+
     $scope.update = function(materia){
         // Se o "novo" nome for igual ao antigo, retornamos
-        // Isso poupa o servidor (mas deveria ser trabalho dele fazer isso)
+        // Isso poupa o servidor (mas deveria ser trabalho dele fazer isso?)
         if(materia.nome === materia.nomeAntigo){
             materia.editing = false;
             return;
         }
-        console.log("Atualizando a matéria com código: " + materia.codigo);
-        $http.put('http://pet.inf.ufpr.br/farol/api/v1/materias/' + materia.codigo, {nome: materia.nome})
-        .success(function (data, status){
+        materia.$update(function() {
             swal("Alterado!", "A matéria " + materia.nome + " foi alterada com sucesso", "success");
-        })
-        .error(function (data){
-            console.log(data);
+        }, function(err) {
+            console.log(err);
+            swal("Erro!", "Não foi possível atualizar " + materia.nome, "error");
         });
         materia.editing = false;
     };
-    
+
     function atualizarMaterias(){
-        $http.get('http://pet.inf.ufpr.br/farol/api/v1/materias')
-        .success(function (data, status){
-            $scope.materias = data;
-        });
+        $scope.materias = Materia.query();
     }
 }]);
