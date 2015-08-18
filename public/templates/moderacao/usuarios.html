@@ -3,22 +3,24 @@
         <h2 class="list-title">Usuários</h2>
         <input type="search" name="filter" ng-model="query" class="search-bar margin-vertical two-thirds" placeholder="Busca" />
         <li ng-repeat="usuario in usuarios | filter: query" class="list-item text-left">
-            {{usuario.username}} - {{usuario.nome}}
-            <br>
-            Membro desde {{usuario.criado | date: 'yyyy'}}
-            <br>
-            <span ng-show="usuario.admin">Administrador</span>
-            <span ng-show="usuario.moderador && !usuario.admin">Moderador</span>
-            <span ng-show="usuario.bloqueado"><br>Bloqueado</span>
-            <div class="float-right">
-                <button type="button" class="button normal hover-shadow" ng-click="block(usuario)" ng-show="usuario._id != me.user_id">
-                    <i class="fa fa-ban fa-fw"></i>
-                </button>
-                <button type="button" class="button red hover-shadow" ng-click="delete(usuario)" ng-show="usuario._id != me.user_id">
-                    <i class="fa fa-close fa-fw"></i>
-                </button>
+            <div ng-show="usuario._id != me.user_id">
+                {{usuario.username}} - {{usuario.nome}}
+                <br>
+                Membro desde {{usuario.criado | date: 'yyyy'}}
+                <br>
+                <span ng-show="usuario.admin">Administrador</span>
+                <span ng-show="usuario.moderador && !usuario.admin">Moderador</span>
+                <span ng-show="usuario.bloqueado"><br>Bloqueado</span>
+                <div class="float-right">
+                    <button type="button" class="button normal hover-shadow" ng-click="block(usuario)">
+                        <i class="fa fa-ban fa-fw"></i>
+                    </button>
+                    <button type="button" class="button red hover-shadow" ng-click="delete(usuario)">
+                        <i class="fa fa-close fa-fw"></i>
+                    </button>
+                </div>
             </div>
         </li>
-        <li ng-show="!usuarios.length" class="list-item">Não há usuários cadastrados</li>
+        <li ng-show="!usuarios.length || usuarios.length == 1" class="list-item">Não há usuários cadastrados</li>
     </ul>
 </div>

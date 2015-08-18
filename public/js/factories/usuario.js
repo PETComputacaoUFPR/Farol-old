@@ -4,6 +4,12 @@ farol.factory('Usuario', function($resource, API, TokenHandler) {
         update: {
             method: 'PUT'
         },
+        me: {
+            method: 'GET',
+            params: {
+                id: 'me'
+            }
+        },
         editMe: {
             method: 'PUT',
             params: {
@@ -19,6 +25,6 @@ farol.factory('Usuario', function($resource, API, TokenHandler) {
         }
     });
 
-    resource = TokenHandler.wrapActions(resource, ['query', 'update', 'delete', 'editMe', 'block']);
+    resource = TokenHandler.wrapActions(resource, ['query', 'update', 'delete', 'me', 'editMe', 'block']);
     return resource;
 })

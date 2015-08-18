@@ -1,7 +1,7 @@
 <div class="clearfix padding-horizontal">
     <div class="float-right">
         <a ui-sref="login" ng-if="!currentUser">Entrar</a>
-        <a href="#/moderacao/home" ng-if="currentUser">Sua conta</a>
+        <a href="#/conta" ng-if="currentUser">Sua conta</a>
         <span ng-if="currentUser.moderador">|</span>
         <a href="#/moderacao/home" ng-if="currentUser.moderador">Admin</a>
     </div>
