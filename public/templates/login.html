@@ -3,19 +3,22 @@
         <a href="#/home"><span class="fa">&#xf13d;</span> Farol</a>
     </h2>
 </header>
+
 <section class="card clearfix margin">
-    <div class="float-left">
+    <div ng-show="isLogin">
         <h2>Login</h2>
         <form ng-submit="login(user)">
             <input type="text" placeholder="Username" ng-model="user.username" required>
             <br>
             <input type="password" placeholder="Senha" ng-model="user.password" required>
             <br/>
-            <button type="submit">Login</button>
+            <button class="button normal" type="submit">Entrar</button>
+            <br>
+            <a ng-click="isLogin = false">Criar Conta</a>
         </form>
     </div>
-    <div class="float-right">
-        <h2>Registre-se</h2>
+    <div ng-show="!isLogin">
+        <h2>Criar conta</h2>
         <form ng-submit="register(newUser)">
             <input type="text" placeholder="Nome" ng-model="newUser.nome" required>
             <br>
@@ -25,7 +28,9 @@
             <br>
             <input type="password" placeholder="Senha" ng-model="newUser.password" required>
             <br/>
-            <button type="submit">Registrar-se</button>
+            <button class="button normal" type="submit">Criar conta</button>
+            <br>
+            <a ng-click="isLogin = true">Entrar</a>
         </form>
     </div>
 </section>

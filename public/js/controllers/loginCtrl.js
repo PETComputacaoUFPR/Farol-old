@@ -13,6 +13,7 @@ farol.config(['$stateProvider', function($stateProvider) {
 .controller('LoginCtrl', ['$scope', '$location', '$rootScope', '$http', 'API', 'TokenHandler', '$window', 'Usuario',
 function ($scope, $location, $rootScope, $http, API, TokenHandler, $window, Usuario) {
     $scope.newUser = new Usuario();
+    $scope.isLogin = true;
 
     $scope.login = function(usuario) {
         login(usuario);
